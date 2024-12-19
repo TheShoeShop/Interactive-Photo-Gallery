@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Photo Gallery</title>
+    <style>
+        #image {
+            width: 400px;
+            height: 300px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 300px;
+            background-color: lightgray;
+            background-size: cover;
+        }
+        .preview {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="image">Hover over an image below to display here.</div>
+    <div>
+        <img src="https://via.placeholder.com/150/0000FF" alt="Blue Square" class="preview" onmouseover="upDate(this)" onmouseout="undo()">
+        <img src="https://via.placeholder.com/150/FF0000" alt="Red Square" class="preview" onmouseover="upDate(this)" onmouseout="undo()">
+        <img src="https://via.placeholder.com/150/00FF00" alt="Green Square" class="preview" onmouseover="upDate(this)" onmouseout="undo()">
+    </div>
+    <script>
+        function upDate(previewPic) {
+            const imageElement = document.getElementById("image");
+            imageElement.innerHTML = previewPic.alt;
+            imageElement.style.backgroundImage = `url(${previewPic.src})`;
+            imageElement.style.backgroundSize = "cover";
+        }
+
+        function undo() {
+            const imageElement = document.getElementById("image");
+            imageElement.innerHTML = "Hover over an image below to display here.";
+            imageElement.style.backgroundImage = "url('')";
+        }
+    </script>
+</body>
+</html>
